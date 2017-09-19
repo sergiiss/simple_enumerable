@@ -14,4 +14,4 @@ class ArrayWrapper
 end
 
 foo = ArrayWrapper.new([5,6,7,8,9,10])
-puts foo.inject(1) {|memo, i| memo * i}
+puts foo.inject {|memo, i| memo * i}
