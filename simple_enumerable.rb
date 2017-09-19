@@ -9,17 +9,14 @@ module SimpleEnumerable
   end
 
   def find(ifnone = nil, &block)
-    result = nil
-    found = false
     each do |elem|
       if block.call(elem)
         result = elem
-        found = true
         break
       end
     end
 
-    found ? result : ifnone && ifnone.call
+    result ? result : ifnone && ifnone.call
   end
 
   def reject(&block)
