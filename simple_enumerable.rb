@@ -40,9 +40,12 @@ module SimpleEnumerable
     result
   end
 
-  def inject(accumulator = 0, &block)
+  def inject(accumulator = nil, &block)
     each do |elem|
-      accumulator = block.call(accumulator, elem)
+      unless accumulator == nil
+        accumulator = block.call(accumulator, elem)
+      end
+      accumulator = elem if accumulator == nil
     end
 
     accumulator
