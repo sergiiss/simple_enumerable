@@ -42,10 +42,11 @@ module SimpleEnumerable
 
   def inject(accumulator = nil, &block)
     each do |elem|
-      unless accumulator == nil
+      if accumulator == nil
+        accumulator = elem
+      else
         accumulator = block.call(accumulator, elem)
       end
-      accumulator = elem if accumulator == nil
     end
 
     accumulator
